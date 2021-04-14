@@ -125,13 +125,17 @@ def DFS(deep):
                 i = trying() + 1
         result.append(a.pop())
         if result[-1][0] == target:
-            print("Monkey find banana:")
+            print("Monkey find banana ( deep =", end=' ')
+            print(deep, end=' ')
+            print(")：")
             print(str(result))
             exit(10)
         else:
             result.pop()
-    print("Unable to find the answer at this depth")
+    print("Unable to find the answer at this depth ( deep =", end=' ')
+    print(deep, end=' ')
+    print(")")
 
 
 if __name__ == "__main__":
-    DFS(5)
+    DFS(5)  # 搜索深度大于5时可解
