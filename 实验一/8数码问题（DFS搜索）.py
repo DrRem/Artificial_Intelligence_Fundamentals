@@ -67,6 +67,8 @@ def structuresearch(top):
     else:
         nodown = False
 
+    appearedlen = len(appeared)
+
     if not noup:
         atfer = mvuptovac(now.copy(), vac)
         if atfer not in appeared:
@@ -88,7 +90,11 @@ def structuresearch(top):
             temp_stack.append([atfer, deep])
             appeared.append(atfer)
 
-    return deep
+    if appearedlen < len(appeared):  # 检查是否产生新后继节点
+        return deep
+    else:
+        return deep - 1
+
 
 
 def DFS(deeps):
@@ -112,15 +118,17 @@ def DFS(deeps):
                     if len(Result_stack) == 0:
                         break
                 while i < deeps - 1:
-                    if len(temp_stack):
-                        Result_stack.append(temp_stack[-1])
-                        if Hit_the_target(Result_stack[-1][0]):
-                            print("finish!")
-                            print(str(Result_stack))
-                            exit(10)
-                        i = structuresearch(temp_stack.pop())
-                    else:
+                    a = i
+                    Result_stack.append(temp_stack[-1])
+                    if Hit_the_target(Result_stack[-1][0]):
+                        print("finish!")
+                        print(str(Result_stack))
+                        exit(10)
+                    i = structuresearch(temp_stack.pop())
+                    if a == i:
                         break
+                    else:
+                        a = i
 
     print("fall")
 
