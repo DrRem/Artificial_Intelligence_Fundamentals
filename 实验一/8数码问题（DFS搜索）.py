@@ -3,7 +3,7 @@ Initial_state = [2, 8, 3, 1, 0, 4, 7, 6, 5]  # 初始状态
 Goal_state = [1, 2, 3, 8, 0, 4, 7, 6, 5]  # 目标状态
 Result_stack = []  # 最终结果
 temp_stack = [[Initial_state, 0]]  # 搜索用栈
-appeared = [[Initial_state]]   # 查重栈
+appeared = [Initial_state]   # 查重栈
 
 
 # 定义操作
