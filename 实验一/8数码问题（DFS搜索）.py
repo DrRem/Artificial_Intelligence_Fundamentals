@@ -1,8 +1,9 @@
 # 八数码问题
-Initial_state = [1, 2, 4, 0, 5, 3, 7, 8, 6]  # 初始状态
-Goal_state = [1, 2, 3, 4, 5, 6, 7, 8, 0]  # 目标状态
+Initial_state = [2, 8, 3, 1, 0, 4, 7, 6, 5]  # 初始状态
+Goal_state = [1, 2, 3, 8, 0, 4, 7, 6, 5]  # 目标状态
 Result_stack = []  # 最终结果
 temp_stack = [[Initial_state, 0]]  # 搜索用栈
+appeared = [[Initial_state]]   # 查重栈
 
 
 # 定义操作
@@ -68,16 +69,24 @@ def structuresearch(top):
 
     if not noup:
         atfer = mvuptovac(now.copy(), vac)
-        temp_stack.append([atfer, deep])
+        if atfer not in appeared:
+            temp_stack.append([atfer, deep])
+            appeared.append(atfer)
     if not nodown:
         atfer = mvdwtovac(now.copy(), vac)
-        temp_stack.append([atfer, deep])
+        if atfer not in appeared:
+            temp_stack.append([atfer, deep])
+            appeared.append(atfer)
     if not noleft:
         atfer = mvltovac(now.copy(), vac)
-        temp_stack.append([atfer, deep])
+        if atfer not in appeared:
+            temp_stack.append([atfer, deep])
+            appeared.append(atfer)
     if not noright:
         atfer = mvrtovac(now.copy(), vac)
-        temp_stack.append([atfer, deep])
+        if atfer not in appeared:
+            temp_stack.append([atfer, deep])
+            appeared.append(atfer)
 
     return deep
 
@@ -114,4 +123,4 @@ def DFS(deeps):
 
 
 if __name__ == "__main__":
-    DFS(15) # 此处推荐使用BFS算法，DFS在该问题中性能很差
+    DFS(5)  # 当深度大于等于5时有解
