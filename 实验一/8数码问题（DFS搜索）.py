@@ -112,12 +112,15 @@ def DFS(deeps):
                     if len(Result_stack) == 0:
                         break
                 while i < deeps - 1:
-                    Result_stack.append(temp_stack[-1])
-                    if Hit_the_target(Result_stack[-1][0]):
-                        print("finish!")
-                        print(str(Result_stack))
-                        exit(10)
-                    i = structuresearch(temp_stack.pop())
+                    if len(temp_stack):
+                        Result_stack.append(temp_stack[-1])
+                        if Hit_the_target(Result_stack[-1][0]):
+                            print("finish!")
+                            print(str(Result_stack))
+                            exit(10)
+                        i = structuresearch(temp_stack.pop())
+                    else:
+                        break
 
     print("fall")
 
