@@ -190,4 +190,5 @@ if __name__ == "__main__":
     tree.fit(dummy_x, dummy_y)
 
     test_row = [1, 0, 0, 0, 1, 1, 0, 0, 1, 0, ]     # 测试数据
+    print(str(test_row))
     print(tree.predict(test_row))
